@@ -12,8 +12,6 @@
 import RPi.GPIO as GPIO  # GPIO-Bibliothek
 # oder "from RPi import GPIO"
 
-import time              # wird für sleep benötigt -> time.sleep(0.5)
-# oder "from time import sleep" -> sleep(0.5)
 import sys
 
 
@@ -21,7 +19,7 @@ import sys
 LED_1 = 20
 BUTTON_1 = 26
 DELAY = 1
-LED_STATE = -1
+LED_STATUS = False
 
 
 def setup():
@@ -38,8 +36,12 @@ def destroy():
 
 def changelightstate(channel):
 
-        GPIO.output(LED_1, bool(LED_STATE))
-        LED_STATE = LED_STATE * -1
+        global LED_STATUS
+
+        LED_STATUS = not LED_STATUS
+
+        GPIO.output(LED_1, LED_STATUS)
+
 
 
 def run():
