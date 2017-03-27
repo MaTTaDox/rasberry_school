@@ -36,7 +36,7 @@ def destroy():
     sys.exit()
 
 
-def changelightstate():
+def changelightstate(channel):
 
         GPIO.output(LED_1, bool(LED_STATE))
         LED_STATE = LED_STATE * -1
