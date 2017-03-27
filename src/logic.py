@@ -45,3 +45,7 @@ def changelightstate():
 def run():
     GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=changelightstate)
 
+    while True:
+        ""
+
+
