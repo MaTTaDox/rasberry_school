@@ -19,13 +19,16 @@ import sys
 
 # globale Variablen festlegen
 LED_1 = 20
+BUTTON_1 = 26
 DELAY = 1
+LED_STATE = -1
 
 
 def setup():
     GPIO.setmode(GPIO.BCM)        # GPIO-Nummer verwenden
     GPIO.setwarnings(False)       # Warnungen ausschalten
     GPIO.setup(LED_1, GPIO.OUT)   # Pin als Ausgang verwenden
+    GPIO.setup(BUTTON_1, GPIO.IN)    # Pin als Ausgang verwenden
 
 
 def destroy():
@@ -33,10 +36,12 @@ def destroy():
     sys.exit()
 
 
-def loop():
+def changelightstate():
 
-    while True:
-        GPIO.output(LED_1, False)
-        time.sleep(DELAY)
-        GPIO.output(LED_1, True)
-        time.sleep(DELAY)
+        GPIO.output(LED_1, bool(LED_STATE))
+        LED_STATE = LED_STATE * -1
+
+
+def run():
+    GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=changelightstate)
+
