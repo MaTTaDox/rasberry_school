@@ -12,11 +12,6 @@
 
 import src.logic as logic
 
-# globale Variablen festlegen
-LED_1 = 20
-DELAY = 1
-
-
 if __name__ == '__main__':  # Programmstart
     logic.setup()
     print 'Programm mit CTRL-C beenden.'

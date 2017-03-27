@@ -17,6 +17,10 @@ import time              # wird für sleep benötigt -> time.sleep(0.5)
 import sys
 
 
+# globale Variablen festlegen
+LED_1 = 20
+DELAY = 1
+
 
 def setup():
     GPIO.setmode(GPIO.BCM)        # GPIO-Nummer verwenden
@@ -32,7 +36,7 @@ def destroy():
 def loop():
 
     while True:
-        GPIO.output(LED_1,False)
+        GPIO.output(LED_1, False)
         time.sleep(DELAY)
-        GPIO.output(LED_1,True)
+        GPIO.output(LED_1, True)
         time.sleep(DELAY)
