@@ -22,13 +22,13 @@ checkTrafficLightRed = True
 checkPassengerTrafficLightRed = False
 
 
-def fussgaengerTrafficLight(channel):
+def fussgaengertrafficlight(channel):
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
-    if(checkTrafficLightRed == True):
+    if checkTrafficLightRed:
         GPIO.output(LED_5_green, False)
-    elif(checkTrafficLightRed == False):
+    elif not checkTrafficLightRed:
         time.sleep(5)
         GPIO.output(LED_3_green, True)
         GPIO.output(LED_2_yellow, False)
@@ -41,12 +41,13 @@ def fussgaengerTrafficLight(channel):
         GPIO.output(LED_5_green, False)
         checkPassengerTrafficLightRed = False
 
-def startTrafficLightSystem(channel):
+
+def starttrafficlightsystem(channel):
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
     GPIO.output(LED_5_green, True)
-    GPIO.Output(LED_4_red, False)
+    GPIO.output(LED_4_red, False)
     GPIO.output(LED_2_yellow, False)
     checkPassengerTrafficLightRed = True
     time.sleep(3)
@@ -66,7 +67,7 @@ def startTrafficLightSystem(channel):
     checkPassengerTrafficLightRed = False
 
 
-def endTaskProcess(channel):
+def endtaskprocess(channel):
     global endTask
     endTask = 0
 
@@ -75,11 +76,11 @@ def run():
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
-    GPIO.setup(LED_1_red, GPIO.OUT)
-    GPIO.setup(LED_2_yellow, GPIO.OUT)
-    GPIO.setup(LED_3_green, GPIO.OUT)
-    GPIO.setup(LED_4_red, GPIO.OUT)
-    GPIO.setup(LED_5_green, GPIO.OUT)
+    GPIO.setup(LED_1_red, GPIO.OUT, initial=True)
+    GPIO.setup(LED_2_yellow, GPIO.OUT, initial=True)
+    GPIO.setup(LED_3_green, GPIO.OUT, initial=True)
+    GPIO.setup(LED_4_red, GPIO.OUT, initial=True)
+    GPIO.setup(LED_5_green, GPIO.OUT, initial=True)
     GPIO.setup(BUTTON_1, GPIO.IN)
     GPIO.setup(BUTTON_2, GPIO.IN)
     GPIO.setup(BUTTON_4, GPIO.IN)
@@ -87,11 +88,11 @@ def run():
     GPIO.output(LED_1_red, False)
     checkTrafficLightRed = True
     GPIO.output(LED_5_green, False)
-    checkPassengerTrafficLightRed  = False
+    checkPassengerTrafficLightRed = False
 
-    GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=startTrafficLightSystem)
-    GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=fussgaengerTrafficLight)
-    GPIO.add_event_detect(BUTTON_4, GPIO.FALLING, callback=endTaskProcess)
+    GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=starttrafficlightsystem)
+    GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=fussgaengertrafficlight)
+    GPIO.add_event_detect(BUTTON_4, GPIO.FALLING, callback=endtaskprocess)
 
     while endTask == 1:
         ""
