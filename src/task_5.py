@@ -37,8 +37,8 @@ def run():
 
     while True:
         s = os.statvfs("/")
-        percent = float(float(s.f_bavail) / float(s.f_blocks))
-        sys.stdout.write("\r"+str(percent))
+        percent = int(float(float(s.f_bavail) / float(s.f_blocks)) * float(100))
+        sys.stdout.write("\r"+str(percent)+"%")
         sys.stdout.flush()
         check(percent)
         time.sleep(0.5)
