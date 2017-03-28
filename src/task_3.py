@@ -26,9 +26,9 @@ def fussgaengerTrafficLight():
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
-    if(checkTrafficLightRed == True)
+    if(checkTrafficLightRed == True):
         GPIO.output(LED_5_green, False)
-    elif(checkTrafficLightRed == False)
+    elif(checkTrafficLightRed == False):
         time.sleep(5)
         GPIO.output(LED_3_green, True)
         GPIO.output(LED_2_yellow, False)
