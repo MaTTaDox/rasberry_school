@@ -56,6 +56,7 @@ def starttrafficlightsystem(channel):
     GPIO.output(LED_3_green, False)
     checkTrafficLightRed = False
     time.sleep(15)
+    GPIO.output(LED_3_green, True)
     GPIO.output(LED_5_green, True)
     GPIO.output(LED_2_yellow, False)
     time.sleep(3)
