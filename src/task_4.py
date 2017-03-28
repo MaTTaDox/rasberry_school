@@ -24,6 +24,10 @@ def count(channel):
     if channel == BUTTON_2:
         pkw += 1
 
+    sys.stdout.write("\r LKW: " + str(lkw) + " PKW: " + str(pkw))
+    sys.stdout.flush()
+
+
 
 def finish(channel):
         global RETURN
@@ -41,8 +45,5 @@ def run():
     GPIO.add_event_detect(BUTTON_3, GPIO.FALLING, callback=finish)
 
     while not RETURN:
-        sys.stdout.write("\r LKW: " + str(lkw) + " PKW: " + str(pkw))
-        sys.stdout.flush()
-        time.sleep(0.5)
-
+        ""
 
