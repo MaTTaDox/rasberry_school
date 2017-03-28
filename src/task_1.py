@@ -13,8 +13,6 @@ BUTTON_2 = 19
 BUTTON_3 = 13
 BUTTON_4 = 6
 
-DELAY = 1
-
 
 def activatelight(channel):
 
@@ -32,13 +30,13 @@ def disablelights(channel):
 
 
 def run():
-    GPIO.setup(LED_1, GPIO.OUT)   # Pin als Ausgang verwenden
-    GPIO.setup(LED_2, GPIO.OUT)   # Pin als Ausgang verwenden
-    GPIO.setup(LED_3, GPIO.OUT)   # Pin als Ausgang verwenden
-    GPIO.setup(BUTTON_1, GPIO.IN)    # Pin als Ausgang verwenden
-    GPIO.setup(BUTTON_2, GPIO.IN)    # Pin als Ausgang verwenden
-    GPIO.setup(BUTTON_3, GPIO.IN)    # Pin als Ausgang verwenden
-    GPIO.setup(BUTTON_4, GPIO.IN)    # Pin als Ausgang verwenden
+    GPIO.setup(LED_1, GPIO.OUT)
+    GPIO.setup(LED_2, GPIO.OUT)
+    GPIO.setup(LED_3, GPIO.OUT)
+    GPIO.setup(BUTTON_1, GPIO.IN)
+    GPIO.setup(BUTTON_2, GPIO.IN)
+    GPIO.setup(BUTTON_3, GPIO.IN)
+    GPIO.setup(BUTTON_4, GPIO.IN)
 
     GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=activatelight)
     GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=activatelight)
