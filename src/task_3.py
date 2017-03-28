@@ -22,7 +22,7 @@ checkTrafficLightRed = True
 checkPassengerTrafficLightRed = False
 
 
-def fussgaengerTrafficLight():
+def fussgaengerTrafficLight(channel):
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
@@ -41,7 +41,7 @@ def fussgaengerTrafficLight():
         GPIO.output(LED_5_green, False)
         checkPassengerTrafficLightRed = False
 
-def startTrafficLightSystem():
+def startTrafficLightSystem(channel):
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
@@ -66,7 +66,7 @@ def startTrafficLightSystem():
     checkPassengerTrafficLightRed = False
 
 
-def endTaskProcess():
+def endTaskProcess(channel):
     global endTask
     endTask = 0
 
