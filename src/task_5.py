@@ -6,11 +6,10 @@ import sys
 import os
 import time
 
-
 def run():
     s = os.statvfs("/")
-    percent = (s.f_frsize * s.f_bfree) / (s.f_frsize * s.f_blocks) * 100
 
+    percent = float(float(s.f_bavail) / float(s.f_blocks))
     while True:
         sys.stdout.write("\r"+str(percent))
         sys.stdout.flush()
