@@ -15,7 +15,7 @@ RETURN = False
 
 
 def count(channel):
-    global lkw,pkw
+    global lkw, pkw
 
     if channel == BUTTON_1:
         lkw += 1
