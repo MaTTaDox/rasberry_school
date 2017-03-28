@@ -2,10 +2,19 @@
 # -*- coding: utf-8 -*-
 
 import RPi.GPIO as GPIO  # GPIO-Bibliothek
-# oder "from RPi import GPIO"
+import time
 
 LED_1 = 21
 BUTTON_1 = 26
+LED_STATE = True
+
+
+def changelight():
+    global LED_STATE
+
+    LED_STATE = not LED_STATE
+
+    GPIO.output(LED_1, LED_STATE)
 
 
 def run():
@@ -14,6 +23,10 @@ def run():
 
     while True:
         x = GPIO.input(BUTTON_1)
-        print x
+        if x == 1:
+            changelight()
+        elif x == 0 and LED_STATE is False:
+            changelight()
+        time.sleep(0.5)
 
 
