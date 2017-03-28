@@ -21,9 +21,11 @@ endTask = 1
 checkAmpelRot = False
 checkFuessgaengerAmpelRot = False
 
+
 def fussgaengerAmpel():
-    if(LED_1_red == 0):
+    if LED_1_red == 0 :
         if(LED_5_green == 0):
+            ""
         else:
             GPIO.output(LED_5_green)
     elif(LED_3_green == 0):
@@ -76,9 +78,9 @@ def run():
     GPIO.output(LED_4_red)
     checkFuessgaengerAmpelRot = True
 
-    while endTask == 1:
-
-
     GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=startAmpelSystem)
     GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=fussgaengerAmpel)
     GPIO.add_event_detect(BUTTON_4, GPIO.FALLING, callback=end)
+
+    while endTask == 1:
+        ""
