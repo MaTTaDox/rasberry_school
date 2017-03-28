@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import RPi.GPIO as GPIO  # GPIO-Bibliothek
-import time
 import sys
 
 BUTTON_1 = 26
@@ -28,7 +27,6 @@ def count(channel):
     sys.stdout.flush()
 
 
-
 def finish(channel):
         global RETURN
 
@@ -39,6 +37,9 @@ def run():
     GPIO.setup(BUTTON_1, GPIO.IN)
     GPIO.setup(BUTTON_2, GPIO.IN)
     GPIO.setup(BUTTON_3, GPIO.IN)
+
+    sys.stdout.write("\r LKW: " + str(lkw) + " PKW: " + str(pkw))
+    sys.stdout.flush()
 
     GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=count)
     GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=count)
