@@ -18,8 +18,7 @@ if __name__ == '__main__':  # Programmstart
           "2. Aufgabe 4\n" \
           "3. Aufgabe 5\n"
 
-    # chased_task = input("Wähle:")
-    chased_task = 3
+    chased_task = input("Wähle:")
 
     try:
         task = options[chased_task]
