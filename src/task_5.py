@@ -35,11 +35,15 @@ def run():
     GPIO.setup(LED_2, GPIO.OUT)
     GPIO.setup(LED_3, GPIO.OUT)
 
+    simulated_percent = 0
+
     while True:
         s = os.statvfs("/")
-        percent = int(float(float(s.f_bavail) / float(s.f_blocks)) * float(100))
+        #percent = int(float(float(s.f_bavail) / float(s.f_blocks)) * float(100))
+        percent = simulated_percent
         sys.stdout.write("\r"+str(percent)+"%")
         sys.stdout.flush()
         check(percent)
+        simulated_percent += 1
         time.sleep(0.5)
 
