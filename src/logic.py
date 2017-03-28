@@ -1,19 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-''' Aufgabenstellung
-
-        Blinklichter werden oft als Warnung bei gef�hrlichen
-        Vorg�ngen eingesetzt.
-
-        Beim Start soll die LED blinken.
-
-'''
 import RPi.GPIO as GPIO  # GPIO-Bibliothek
 # oder "from RPi import GPIO"
 
 import sys
-
 
 # globale Variablen festlegen
 LED_1 = 20
@@ -41,7 +32,6 @@ def changelightstate(channel):
         LED_STATUS = not LED_STATUS
 
         GPIO.output(LED_1, LED_STATUS)
-
 
 
 def run():
