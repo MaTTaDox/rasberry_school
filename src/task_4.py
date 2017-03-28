@@ -32,7 +32,7 @@ def finish(channel):
 
 
 def run():
-    GPIO.setup(BUTTON_1,2 GPIO.IN)
+    GPIO.setup(BUTTON_1, GPIO.IN)
     GPIO.setup(BUTTON_2, GPIO.IN)
     GPIO.setup(BUTTON_3, GPIO.IN)
 
