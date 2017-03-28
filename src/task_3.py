@@ -65,7 +65,8 @@ def startTrafficLightSystem():
     checkTrafficLightRed = True
     checkPassengerTrafficLightRed = False
 
-def end():
+
+def endTaskProcess():
     global endTask
     endTask = 0
 
@@ -90,7 +91,7 @@ def run():
 
     GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=startTrafficLightSystem)
     GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=fussgaengerTrafficLight)
-    GPIO.add_event_detect(BUTTON_4, GPIO.FALLING, callback=end)
+    GPIO.add_event_detect(BUTTON_4, GPIO.FALLING, callback=endTaskProcess)
 
     while endTask == 1:
         ""
