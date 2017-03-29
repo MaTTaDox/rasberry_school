@@ -26,46 +26,43 @@ def fussgaengertrafficlight(channel):
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
-    if checkTrafficLightRed:
-        GPIO.output(LED_5_green, False)
-    elif not checkTrafficLightRed:
-        time.sleep(5)
-        GPIO.output(LED_3_green, True)
-        GPIO.output(LED_2_yellow, False)
-        time.sleep(3)
-        GPIO.output(LED_2_yellow, True)
-        GPIO.output(LED_1_red, False)
-        checkTrafficLightRed = True
-        time.sleep(2)
-        GPIO.output(LED_4_red, True)
-        GPIO.output(LED_5_green, False)
-        checkPassengerTrafficLightRed = False
+    time.sleep(1)
+    GPIO.output(LED_3_green, True)
+    GPIO.output(LED_2_yellow, False)
+    time.sleep(3)
+    GPIO.output(LED_2_yellow, True)
+    GPIO.output(LED_1_red, False)
+    checkTrafficLightRed = True
+    time.sleep(1)
+    GPIO.output(LED_4_red, True)
+    GPIO.output(LED_5_green, False)
+    checkPassengerTrafficLightRed = False
 
 
 def starttrafficlightsystem(channel):
     global checkTrafficLightRed
     global checkPassengerTrafficLightRed
 
-    GPIO.output(LED_5_green, True)
-    GPIO.output(LED_4_red, False)
-    GPIO.output(LED_2_yellow, False)
-    checkPassengerTrafficLightRed = True
-    time.sleep(3)
-    GPIO.output(LED_1_red, True)
-    GPIO.output(LED_2_yellow, True)
-    GPIO.output(LED_3_green, False)
-    checkTrafficLightRed = False
-    time.sleep(15)
-    GPIO.output(LED_3_green, True)
-    GPIO.output(LED_5_green, True)
-    GPIO.output(LED_2_yellow, False)
-    time.sleep(3)
-    GPIO.output(LED_2_yellow, True)
-    GPIO.output(LED_1_red, False)
-    GPIO.output(LED_4_red, True)
-    GPIO.output(LED_5_green, False)
-    checkTrafficLightRed = True
-    checkPassengerTrafficLightRed = False
+    #if checkTrafficLightRed == True:
+    #    time.sleep(10)
+    #time.sleep(15)
+    while 1:
+        GPIO.output(LED_5_green, True)
+        GPIO.output(LED_4_red, False)
+        GPIO.output(LED_2_yellow, False)
+        checkPassengerTrafficLightRed = True
+        time.sleep(3)
+        GPIO.output(LED_1_red, True)
+        GPIO.output(LED_2_yellow, True)
+        GPIO.output(LED_3_green, False)
+        checkTrafficLightRed = False
+        while 1:
+            if GPIO.input(BUTTON_2):
+                #GPIO.output(LED_2_yellow, False)
+                fussgaengertrafficlight(channel)
+                time.sleep(5)
+                break
+
 
 
 def endtaskprocess(channel):
