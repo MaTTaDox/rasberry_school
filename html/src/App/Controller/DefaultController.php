@@ -23,7 +23,10 @@ class DefaultController extends BaseController
         $message = $this->request->get("m");
 
         if(strlen($message)){
-            var_dump(exec("cd ".Path::getRootDir()."/../python/display_string.py \"".$message."\""));
+
+            $exec = "python ".Path::getRootDir()."/../python/display_string.py \"".$message."\"";
+            var_dump(exec($exec));
+            
         }
 
 
