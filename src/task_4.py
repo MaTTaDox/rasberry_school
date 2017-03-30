@@ -3,7 +3,7 @@
 
 import RPi.GPIO as GPIO  # GPIO-Bibliothek
 import sys
-#import max7219.led as led
+import max7219.led as led
 import lib.lcddriver as lcddriver
 
 BUTTON_1 = 26
@@ -13,7 +13,7 @@ BUTTON_3 = 13
 lkw = 0
 pkw = 0
 
-#matrix = led.matrix()
+matrix = led.matrix()
 
 #lcd = lcddriver.lcd()
 #lcd.lcd_clear()
@@ -31,7 +31,7 @@ def count(channel):
     if channel == BUTTON_2:
         pkw += 1
 
-    #matrix.show_message(str(pkw))
+    matrix.show_message(str(pkw))
     #lcd.lcd_clear()
     #lcd.lcd_display_string("\r LKW: " + str(lkw) + " PKW: " + str(pkw), 1)
     sys.stdout.write("\r LKW: " + str(lkw) + " PKW: " + str(pkw))
