@@ -11,7 +11,7 @@ matrix = led.matrix()
 if __name__ == '__main__':  # Programmstart
 
     try:
-        arg = sys.argv[0]
+        arg = sys.argv[1]
         matrix.show_message(str(arg))
         logic.destroy()
     except IndexError:
