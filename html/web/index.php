@@ -12,8 +12,9 @@ $loader->setUseIncludePath(true);
 
 $loader->addPrefix("App",__DIR__.'/../src');
 // ... register namespaces and prefixes here - see below
-
 $loader->register();
+
+
 
 
 $app = new Silex\Application();
