@@ -53,9 +53,9 @@ def run():
     sys.stdout.write("\r LKW: " + str(lkw) + " PKW: " + str(pkw))
     sys.stdout.flush()
 
-    GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=count)
-    GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=count)
-    GPIO.add_event_detect(BUTTON_3, GPIO.FALLING, callback=finish)
+    GPIO.add_event_detect(BUTTON_1, GPIO.FALLING, callback=count, bouncetime=200)
+    GPIO.add_event_detect(BUTTON_2, GPIO.FALLING, callback=count, bouncetime=200)
+    GPIO.add_event_detect(BUTTON_3, GPIO.FALLING, callback=finish, bouncetime=200)
 
     while not RETURN:
         ""
