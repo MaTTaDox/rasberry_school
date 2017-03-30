@@ -23,7 +23,6 @@ RETURN = False
 
 def count(channel):
     global lkw, pkw
-    #matrix
 
     if channel == BUTTON_1:
         lkw += 1
@@ -39,13 +38,12 @@ def count(channel):
 
 
 def finish(channel):
-        global RETURN
+    global RETURN
 
-        RETURN = True
+    RETURN = True
 
 
 def run():
-
     GPIO.setup(BUTTON_1, GPIO.IN)
     GPIO.setup(BUTTON_2, GPIO.IN)
     GPIO.setup(BUTTON_3, GPIO.IN)
@@ -59,4 +57,3 @@ def run():
 
     while not RETURN:
         ""
-
