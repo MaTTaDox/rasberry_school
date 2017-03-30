@@ -15,8 +15,8 @@ pkw = 0
 
 matrix = led.matrix()
 
-#lcd = lcddriver.lcd()
-#lcd.lcd_clear()
+lcd = lcddriver.lcd()
+lcd.lcd_clear()
 
 RETURN = False
 
@@ -32,8 +32,8 @@ def count(channel):
         pkw += 1
 
     matrix.show_message(str(pkw))
-    #lcd.lcd_clear()
-    #lcd.lcd_display_string("\r LKW: " + str(lkw) + " PKW: " + str(pkw), 1)
+    lcd.lcd_clear()
+    lcd.lcd_display_string("\r LKW: " + str(lkw) + " PKW: " + str(pkw), 1)
     sys.stdout.write("\r LKW: " + str(lkw) + " PKW: " + str(pkw))
     sys.stdout.flush()
 
