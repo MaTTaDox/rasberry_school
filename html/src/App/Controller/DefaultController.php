@@ -25,8 +25,9 @@ class DefaultController extends BaseController
         if(strlen($message)){
 
             $exec = "python ".Path::getRootDir()."/../python/display_string.py \"".$message."\"";
-            var_dump(exec($exec));
-            
+            var_dump($exec);
+            var_dump(shell_exec($exec));
+
         }
 
 
