@@ -6,7 +6,7 @@
  * Time: 13:07
  */
 
-namespace Controller;
+namespace App\Controller;
 
 
 use Symfony\Component\HttpFoundation\JsonResponse;

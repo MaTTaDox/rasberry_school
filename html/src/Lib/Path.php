@@ -6,7 +6,7 @@
  * Time: 13:20
  */
 
-namespace Lib;
+namespace App\Lib;
 
 
 class Path
@@ -14,7 +14,7 @@ class Path
 
     public static function getRootDir()
     {
-        return dirname(__DIR__)."/";
+        return dirname(__DIR__)."../";
     }
 
 }
