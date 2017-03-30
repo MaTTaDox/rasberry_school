@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use Lib\Path;
+use App\Lib\Path;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

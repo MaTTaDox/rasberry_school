@@ -14,7 +14,7 @@ class Path
 
     public static function getRootDir()
     {
-        return dirname(__DIR__)."../";
+        return dirname(__DIR__)."/../..";
     }
 
 }

@@ -9,7 +9,6 @@
 namespace App\Controller;
 
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends BaseController

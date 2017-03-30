@@ -19,8 +19,10 @@ $loader->register();
 
 $app = new Silex\Application();
 
+$app['debug'] = true;
+
 $app->get('/', function (\Symfony\Component\HttpFoundation\Request $request) {
     $controller = new App\Controller\DefaultController($request);
-    return $controller;
+    return $controller->base();
 });
 $app->run();
