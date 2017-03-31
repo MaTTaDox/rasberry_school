@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Lib\Path;
 use App\Lib\Python;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends BaseController
@@ -26,8 +27,6 @@ class DefaultController extends BaseController
     }
 
     public function display(){
-        if($this->request->get("messageBtn") == "send")
-        {
             $message = $this->request->get("m");
 
             if (strlen($message))
@@ -37,9 +36,8 @@ class DefaultController extends BaseController
                 Python::run($x);
 
             }
-        }
 
-        return $this->render("main.twig",[]);
+        return new JsonResponse(["success" => true]);
     }
 
 }

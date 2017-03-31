@@ -19,13 +19,29 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <form method="post">
         <div class="form-group">
             <label for="message">Nachricht</label>
-            <input type="text" name="m" id="message"class="form-control" />
+            <input type="text" name="m" id="message" class="form-control" />
         </div>
-        <button class="btn btn-primary" name="messageBtn" value="send" >Senden</button>
-    </form>
+        <button class="btn btn-primary" name="messageBtn" value="send" onclick="send()">Senden</button>
 </div>
 </body>
 </html>
+<script>
+    function send(){
+        var message = $("#message").val();
+
+        $.ajax("/api/message",{
+            data: {
+                'm': message
+            },
+            success: function(result){
+
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+
+            },
+            method: "POST"
+        });
+    }
+</script>
