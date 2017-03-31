@@ -24,7 +24,7 @@ class DefaultController extends BaseController
 
         if(strlen($message)){
 
-            $exec = "/usr/bin/python ".Path::getRootDir()."/../python/display_string.py \"".$message."\" 2>&1 ";
+            $exec = "ssh pi@localhost \"/usr/bin/python ".Path::getRootDir()."/../python/display_string.py \\\"".$message."\\\" \" 2>&1 ";
             var_dump($exec);
             var_dump(shell_exec($exec));
 
