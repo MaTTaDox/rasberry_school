@@ -13,7 +13,7 @@ class Python
 {
 
     public static function run($command){
-        
+
         $exec = "ssh pi@localhost \"/usr/bin/python ".addslashes($command)." \" 2>&1 ";
         return shell_exec($exec);
     }

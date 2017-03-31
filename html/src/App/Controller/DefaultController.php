@@ -21,17 +21,18 @@ class DefaultController extends BaseController
      */
     public function base(){
 
-        $message = $this->request->get("m");
+        if($this->request->get("messageBtn") == "send")
+        {
+            $message = $this->request->get("m");
 
-        if(strlen($message)){
+            if (strlen($message))
+            {
 
-            $x = Path::getRootDir()."/../python/display_string.py \"".$message."\"";
-            Python::run($x);
+                $x = Path::getRootDir() . "/../python/display_string.py \"" . $message . "\"";
+                Python::run($x);
 
+            }
         }
-
-
-
 
         return $this->render("main.twig",[]);
 
