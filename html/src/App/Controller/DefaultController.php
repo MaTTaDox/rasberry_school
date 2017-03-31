@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Lib\Path;
+use App\Lib\Python;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends BaseController
@@ -24,11 +25,12 @@ class DefaultController extends BaseController
 
         if(strlen($message)){
 
-            $exec = "ssh pi@localhost \"/usr/bin/python ".Path::getRootDir()."/../python/display_string.py \\\"".$message."\\\" \" 2>&1 ";
-            var_dump($exec);
-            var_dump(shell_exec($exec));
+            $x = Path::getRootDir()."/../python/display_string.py \"".$message."\"";
+            Python::run($x);
 
         }
+
+
 
 
         return $this->render("main.twig",[]);
