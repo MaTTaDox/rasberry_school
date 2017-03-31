@@ -21,6 +21,11 @@ class DefaultController extends BaseController
      */
     public function base(){
 
+        return $this->render("main.twig",[]);
+
+    }
+
+    public function display(){
         if($this->request->get("messageBtn") == "send")
         {
             $message = $this->request->get("m");
@@ -35,7 +40,6 @@ class DefaultController extends BaseController
         }
 
         return $this->render("main.twig",[]);
-
     }
 
 }

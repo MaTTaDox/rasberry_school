@@ -25,4 +25,8 @@ $app->get('/', function (\Symfony\Component\HttpFoundation\Request $request) {
     $controller = new App\Controller\DefaultController($request);
     return $controller->base();
 });
+$app->post("/", function (\Symfony\Component\HttpFoundation\Request $request) {
+    $controller = new App\Controller\DefaultController($request);
+    return $controller->display();
+});
 $app->run();
