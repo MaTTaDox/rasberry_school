@@ -10,24 +10,39 @@ import datetime  # GPIO-Bibliothek
 
 sensor = Adafruit_DHT.DHT11
 
-pin = 26
+SENSOR_PIN = 26
+RED_LIGHT = 17
+BLUE_LIGHT = 27
+
+
 delay = 10
 
-def loop():
-    while True:
-        luftfeuchte, temperatur = Adafruit_DHT.read_retry(sensor, pin)
-        messzeit = time.strftime("Am %d.%m.%Y um %H:%M:%S Uhr")
-        print '+-------------------------------------------------+'
-        print messzeit
-        print 'Temperatur: {0:0.1f}°C Luftfeuchtigkeit: {1:0.1f}%'.format(temperatur,luftfeuchte)
-        time.sleep(delay)
-
-
 def run():
+
+    GPIO.setup(RED_LIGHT, GPIO.OUT)
+    GPIO.setup(BLUE_LIGHT, GPIO.OUT)
+
     print "Die Messung erfolgt alle %d Sekunden." % delay
 
+    last_temp = 0
+
     while True:
-        luftfeuchte, temperatur = Adafruit_DHT.read_retry(sensor, pin)
+
+        GPIO.output(RED_LIGHT, True)
+        GPIO.output(BLUE_LIGHT, True)
+
+        luftfeuchte, temperatur = Adafruit_DHT.read_retry(sensor, SENSOR_PIN)
+
+        if temperatur > last_temp:
+            GPIO.output(RED_LIGHT, False)
+        elif temperatur < last_temp:
+            GPIO.output(BLUE_LIGHT, False)
+        else:
+            GPIO.output(RED_LIGHT, False)
+            GPIO.output(BLUE_LIGHT, False)
+
+
+
         messzeit = time.strftime("Am %d.%m.%Y um %H:%M:%S Uhr")
         print '+-------------------------------------------------+'
         print messzeit
