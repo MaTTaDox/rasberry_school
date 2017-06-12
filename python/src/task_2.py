@@ -7,7 +7,7 @@ from ctypes import c_short
 import smbus
 import csv
 with open('readings.csv', 'w') as readings_file:
-    readings_writer = csv.writer(readings_file, ";")
+    readings_writer = csv.writer(readings_file, delimiter=";")
 
 DEVICE = 0x77 # Default device I2C address
 
