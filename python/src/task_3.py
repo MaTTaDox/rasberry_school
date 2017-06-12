@@ -130,7 +130,7 @@ def run():
     print "Chip ID     :", chip_id
     print "Chip Version:", chip_version
 
-    print "------------------------------"
+    print '+-------------------------------------------------+'
 
     with open('readings.csv', 'w') as readings_file:
         readings_writer = csv.writer(readings_file, delimiter=";")
@@ -164,9 +164,9 @@ def run():
 
             last_temp = temperatur
 
+            print 'Temperatur: {0:0.1f}°C '.format(temperatur)
+            print 'Luftfeuchtigkeit: {1:0.1f}%'.format(luftfeuchte)
             print '+-------------------------------------------------+'
-            print "Am ", messzeit
-            print 'Temperatur: {0:0.1f}°C Luftfeuchtigkeit: {1:0.1f}%'.format(temperatur, luftfeuchte)
 
             time.sleep(delay)
 
