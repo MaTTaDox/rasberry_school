@@ -28,18 +28,18 @@ def run():
 
     while True:
 
-        GPIO.output(RED_LIGHT, True)
-        GPIO.output(BLUE_LIGHT, True)
+        GPIO.output(RED_LIGHT, False)
+        GPIO.output(BLUE_LIGHT, False)
 
         luftfeuchte, temperatur = Adafruit_DHT.read_retry(sensor, SENSOR_PIN)
 
         if temperatur > last_temp:
-            GPIO.output(RED_LIGHT, False)
+            GPIO.output(RED_LIGHT, True)
         elif temperatur < last_temp:
-            GPIO.output(BLUE_LIGHT, False)
+            GPIO.output(BLUE_LIGHT, True)
         else:
-            GPIO.output(RED_LIGHT, False)
-            GPIO.output(BLUE_LIGHT, False)
+            GPIO.output(RED_LIGHT, True)
+            GPIO.output(BLUE_LIGHT, True)
 
 
 
