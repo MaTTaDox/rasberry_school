@@ -41,7 +41,7 @@ def run():
             GPIO.output(RED_LIGHT, True)
             GPIO.output(BLUE_LIGHT, True)
 
-
+        last_temp = temperatur
 
         messzeit = time.strftime("Am %d.%m.%Y um %H:%M:%S Uhr")
         print '+-------------------------------------------------+'
