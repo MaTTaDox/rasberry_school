@@ -130,19 +130,18 @@ def run():
         readings_writer = csv.writer(readings_file, delimiter=";")
         readings_writer.writerow(["Messzeit", "Temperatur", "Luftdruck"])
 
-    while True:
+        while True:
 
-        (temperature, pressure) = readBmp180()
-        messzeit = time.strftime("%d.%m.%Y %H:%M:%S")
+            (temperature, pressure) = readBmp180()
+            messzeit = time.strftime("%d.%m.%Y %H:%M:%S")
 
-        print "Messzeit : ", messzeit
-        print "Temperatur : ", temperature, "°C"
-        print "Luftdruck  : ", pressure, "mbar"
-        print "------------------------------"
+            print "Messzeit : ", messzeit
+            print "Temperatur : ", temperature, "°C"
+            print "Luftdruck  : ", pressure, "mbar"
+            print "------------------------------"
 
-        with open('readings.csv', 'w') as readings_file:
             readings_writer = csv.writer(readings_file, delimiter=";")
             readings_writer.writerow([messzeit, temperature, pressure])
 
-        time.sleep(delay)
+            time.sleep(delay)
 
