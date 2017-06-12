@@ -11,6 +11,9 @@ import time
 
 sensor = Adafruit_DHT.DHT11
 
+lcd = lcddriver.lcd()
+lcd.lcd_clear()
+
 SENSOR_PIN = 26
 RED_LIGHT = 17
 BLUE_LIGHT = 27
@@ -164,9 +167,13 @@ def run():
 
             last_temp = temperatur
 
-            print 'Temperatur: {0:0.1f}°C '.format(temperature)
+            print 'Temperatur: {0:0.1f}°C '.format(temperatur)
             print 'Luftfeuchtigkeit: {0:0.1f}%'.format(luftfeuchte)
             print '+-------------------------------------------------+'
 
+            string = "T: {0:0.1f} L: {0:0.1f}% D: {2:0.2f}".format(temperature, luftfeuchte, pressure)
+
+            lcd.lcd_display_string(messzeit, 1)
+            lcd.lcd_display_string(string, 2)
             time.sleep(delay)
 
