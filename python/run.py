@@ -12,8 +12,8 @@ if __name__ == '__main__':  # Programmstart
 
     print "Wähle den Task\n" \
           "0: Aufgabe 1 / 1.2\n" \
-          "1: Aufgabe 2" \
-          "2: Aufgabe 3" \
+          "1: Aufgabe 2\n" \
+          "2: Aufgabe 3\n" \
 
 
     chased_task = input("Wähle:")
