@@ -142,7 +142,7 @@ def run():
         while True:
 
             (temperature, pressure) = readBmp180()
-            messzeit = time.strftime("%d.%m.%Y %H:%M:%S")
+            messzeit = time.strftime("%d.%m.%y %H:%M:%S")
 
             print "Messzeit : ", messzeit
             print "Temperatur : ", temperature, "°C"
@@ -171,9 +171,10 @@ def run():
             print 'Luftfeuchtigkeit: {0:0.1f}%'.format(luftfeuchte)
             print '+-------------------------------------------------+'
 
-            string = "{0:0.1f}C|{1:0.1f}%|{2:0.2f}mBar".format(temperature, luftfeuchte, pressure)
+            string_1 = time.strftime("%d.%m %H:%M"), " | {0:0.1f}C".format(temperature)
+            string_2 = "{0:0.1f}% | {1:0.2f}mBar".format(luftfeuchte, pressure)
 
-            lcd.lcd_display_string(messzeit, 1)
-            lcd.lcd_display_string(string, 2)
+            lcd.lcd_display_string(string_1, 1)
+            lcd.lcd_display_string(string_2, 2)
             time.sleep(delay)
 
