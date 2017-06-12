@@ -5,6 +5,9 @@ import RPi.GPIO as GPIO
 import time
 from ctypes import c_short
 import smbus
+import csv
+with open('readings.csv', 'w') as readings_file:
+    readings_writer = csv.writer(readings_file, ";")
 
 DEVICE = 0x77 # Default device I2C address
 
@@ -12,7 +15,7 @@ DEVICE = 0x77 # Default device I2C address
 SENSOR_PIN = 26
 RED_LIGHT = 17
 BLUE_LIGHT = 27
-delay = 10
+delay = 2
 
 #bus = smbus.SMBus(0)  # Rev 1 Pi uses 0
 bus = smbus.SMBus(1)   # Rev 2 Pi uses 1
@@ -125,10 +128,19 @@ def run():
 
     print "------------------------------"
 
+    readings_writer.writerow(["Messzeit", "Temperatur", "Luftdruck"])
+
     while True:
 
         (temperature, pressure) = readBmp180()
+        messzeit = time.strftime("%d.%m.%Y %H:%M:%S")
+
+        print "Messzeit : ", messzeit
         print "Temperatur : ", temperature, "°C"
         print "Luftdruck  : ", pressure, "mbar"
+        print "------------------------------"
+
+        readings_writer.writerow([messzeit, temperature, pressure])
+
         time.sleep(delay)
 
