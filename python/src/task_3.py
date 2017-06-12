@@ -164,9 +164,9 @@ def run():
 
             last_temp = temperatur
 
-            print 'Temperatur: {0:0.1f}°C '.format(temperatur)
-            print 'Luftfeuchtigkeit: {1:0.1f}%'.format(luftfeuchte)
+            print 'Temperatur: {0:0.1f}°C '.format(temperature)
+            print 'Luftfeuchtigkeit: {0:0.1f}%'.format(luftfeuchte)
             print '+-------------------------------------------------+'
 
-            time.sleep(delay)
+        time.sleep(delay)
 
