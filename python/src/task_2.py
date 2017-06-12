@@ -6,8 +6,6 @@ import time
 from ctypes import c_short
 import smbus
 import csv
-with open('readings.csv', 'w') as readings_file:
-    readings_writer = csv.writer(readings_file, delimiter=";")
 
 DEVICE = 0x77 # Default device I2C address
 
@@ -128,7 +126,9 @@ def run():
 
     print "------------------------------"
 
-    readings_writer.writerow(["Messzeit", "Temperatur", "Luftdruck"])
+    with open('readings.csv', 'w') as readings_file:
+        readings_writer = csv.writer(readings_file, delimiter=";")
+        readings_writer.writerow(["Messzeit", "Temperatur", "Luftdruck"])
 
     while True:
 
@@ -140,7 +140,9 @@ def run():
         print "Luftdruck  : ", pressure, "mbar"
         print "------------------------------"
 
-        readings_writer.writerow([messzeit, temperature, pressure])
+        with open('readings.csv', 'w') as readings_file:
+            readings_writer = csv.writer(readings_file, delimiter=";")
+            readings_writer.writerow([messzeit, temperature, pressure])
 
         time.sleep(delay)
 
