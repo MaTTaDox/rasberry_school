@@ -171,8 +171,8 @@ def run():
             print 'Luftfeuchtigkeit: {0:0.1f}%'.format(luftfeuchte)
             print '+-------------------------------------------------+'
 
-            string_1 = "{0} | {1:0.1f}C".format(time.strftime("%d.%m %H:%M"), temperature)
-            string_2 = "{0:0.1f}% | {1:0.2f}mBar".format(luftfeuchte, pressure)
+            string_1 = "{0}|{1:0.1f}C".format(time.strftime("%d.%m %H:%M"), temperature)
+            string_2 = "{0:0.1f}%|{1:0.2f}mBar".format(luftfeuchte, pressure)
 
             lcd.lcd_display_string(string_1, 1)
             lcd.lcd_display_string(string_2, 2)
