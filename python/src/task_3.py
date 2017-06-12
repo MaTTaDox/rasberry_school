@@ -168,5 +168,5 @@ def run():
             print 'Luftfeuchtigkeit: {0:0.1f}%'.format(luftfeuchte)
             print '+-------------------------------------------------+'
 
-        time.sleep(delay)
+            time.sleep(delay)
 
