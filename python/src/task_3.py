@@ -2,14 +2,23 @@
 # -*- coding: utf-8 -*-
 
 import RPi.GPIO as GPIO
-import time
 from ctypes import c_short
 import smbus
 import csv
+import lib.lcddriver as lcddriver
+import Adafruit_DHT
+import time
+
+sensor = Adafruit_DHT.DHT11
+
+SENSOR_PIN = 26
+RED_LIGHT = 17
+BLUE_LIGHT = 27
+
 
 DEVICE = 0x77 # Default device I2C address
 
-delay = 2
+delay = 5
 
 #bus = smbus.SMBus(0)  # Rev 1 Pi uses 0
 bus = smbus.SMBus(1)   # Rev 2 Pi uses 1
@@ -110,6 +119,9 @@ def readBmp180(addr=DEVICE):
 
 def run():
 
+    GPIO.setup(RED_LIGHT, GPIO.OUT)
+    GPIO.setup(BLUE_LIGHT, GPIO.OUT)
+    last_temp = 0
 
     print "Die Messung erfolgt alle %d Sekunden." % delay
 
@@ -136,6 +148,25 @@ def run():
 
             readings_writer = csv.writer(readings_file, delimiter=";")
             readings_writer.writerow([messzeit, temperature, pressure])
+
+            GPIO.output(RED_LIGHT, False)
+            GPIO.output(BLUE_LIGHT, False)
+
+            luftfeuchte, temperatur = Adafruit_DHT.read_retry(sensor, SENSOR_PIN)
+
+            if temperatur > last_temp:
+                GPIO.output(RED_LIGHT, True)
+            elif temperatur < last_temp:
+                GPIO.output(BLUE_LIGHT, True)
+            else:
+                GPIO.output(RED_LIGHT, True)
+                GPIO.output(BLUE_LIGHT, True)
+
+            last_temp = temperatur
+
+            print '+-------------------------------------------------+'
+            print "Am ", messzeit
+            print 'Temperatur: {0:0.1f}°C Luftfeuchtigkeit: {1:0.1f}%'.format(temperatur, luftfeuchte)
 
             time.sleep(delay)
 

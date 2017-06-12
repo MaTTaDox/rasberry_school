@@ -4,14 +4,16 @@
 import src.logic as logic
 import src.task_1 as task_1
 import src.task_2 as task_2
+import src.task_3 as task_3
 
 if __name__ == '__main__':  # Programmstart
     logic.setup()
-    options = [task_1, task_2]
+    options = [task_1, task_2, task_3]
 
     print "Wähle den Task\n" \
           "0: Aufgabe 1 / 1.2\n" \
           "1: Aufgabe 2" \
+          "2: Aufgabe 3" \
 
 
     chased_task = input("Wähle:")
