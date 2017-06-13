@@ -20,7 +20,10 @@
         };
 
         setInterval(function () {
+            load();
+        }, 5000);
 
+        function load(){
             $.ajax("/api/locations", {
 
                 success: function (result) {
@@ -38,7 +41,7 @@
                 method: "GET"
             });
 
-        }, 10000);
+        }
 
         function getSummary(id)
         {
