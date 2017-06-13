@@ -51,7 +51,7 @@ def run():
 
     count = 0
     total = 0
-
+    avg = 0
     while True:
         (temperature, pressure) = bmp180.readBmp180()
         (humidity, temperatur) = Adafruit_DHT.read_retry(sensor, SENSOR_PIN)
