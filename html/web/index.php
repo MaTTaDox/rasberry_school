@@ -21,10 +21,6 @@ $app = new Silex\Application();
 
 $app['debug'] = true;
 
-$app->get("/lol",function(\Symfony\Component\HttpFoundation\Request $request){
-    return "lol";
-});
-
 $app->get('/', function (\Symfony\Component\HttpFoundation\Request $request) {
     $controller = new App\Controller\DefaultController($request);
     return $controller->base();
@@ -34,4 +30,5 @@ $app->get("/api/readings", function (\Symfony\Component\HttpFoundation\Request $
     $controller = new App\Controller\DefaultController($request);
     return $controller->listReadingValues();
 });
+
 $app->run();
