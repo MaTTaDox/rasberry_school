@@ -49,9 +49,21 @@ def run():
     location = raw_input("Messort:")
     locationId = getLocation(location)
 
+    count = 0
+    total = 0
+    l
+
     while True:
         (temperature, pressure) = bmp180.readBmp180()
         (humidity, temperatur) = Adafruit_DHT.read_retry(sensor, SENSOR_PIN)
+
+        total = total + humidity
+
+        if count > 10:
+            avg = total/count
+            
+            if humidity > 2 * avg:
+                humidity = avg
 
         messzeit = time.strftime("%d.%m.%y %H:%M:%S")
 
@@ -73,6 +85,7 @@ def run():
         inserRow(locationId, "humidity", humidity)
         inserRow(locationId, "pressure", pressure)
 
+        count = count + 1
         time.sleep(delay)
 
 
