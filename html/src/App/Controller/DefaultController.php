@@ -30,20 +30,15 @@ class DefaultController extends BaseController
 
             $offset = ($page * $itemsPerPage) - $itemsPerPage;
 
-            $mysql = new \mysqli("localhost","root","abcD123","readings");
+            $mysql = new \MySQLi("localhost","root","abcD123","readings");
+            $query = $mysql->query("SELECT SQL_CALC_FOUND_ROWS * FROM `values` as v INNER JOIN locations as l 
+                                  WHERE l.id = v.location_id LIMIT ".$itemsPerPage." OFFSET ".$offset);
 
-            $query = $mysql->stmt_init();
-            $query->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM `values` as v INNER JOIN locations as l 
-                                  WHERE l.id = v.location_id LIMIT ? OFFSET ?");
-            $query->bind_param("ii", $itemsPerPage, $offset);
 
-            $query->execute();
-
-            $total = $query->num_rows;
+            $total = 0;
 
             $results = [];
-            $result = $query->get_result();
-            while($row = $result->fetch_assoc()){
+            while($row = $query->fetch_assoc()){
                 $results[] = $row;
             }
 
