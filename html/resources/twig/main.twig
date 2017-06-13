@@ -88,11 +88,16 @@
 
                 if(result.page >= last){
                     $(".next").addClass("disabled");
-                    $(".previous").removeClass("disabled");
                 }
-                else if(result.page <= first){
-                    $(".previous").addClass("disabled");
+                else {
                     $(".next").removeClass("disabled");
+                }
+
+                if(result.page <= first){
+                    $(".previous").addClass("disabled");
+                }
+                else {
+                    $(".previous").removeClass("disabled");
                 }
 
 
