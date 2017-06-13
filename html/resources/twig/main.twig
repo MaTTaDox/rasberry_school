@@ -21,11 +21,15 @@
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-body">
-            <a onclick="page--;get()" class="previous pull-left"><span aria-hidden="true">&larr;</span> Older</a>
             Seite <span class="badge" id="site"></span> Pro Seite <span class="badge" id="perPage"></span> Gesamt <span class="badge" id="total"></span>
-            <a class="next pull-right" onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a>
         </div>
     </div>
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous"><a onclick="page--;get()"><span aria-hidden="true">&larr;</span> Older</a></li>
+            <li class="next"><a onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
 
     <table class="table table-striped">
         <thead>
