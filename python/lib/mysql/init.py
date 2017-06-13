@@ -33,6 +33,9 @@ def db():
                 "CONSTRAINT `values_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE"
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8;"
             )
+
+            con.commit()
+
     except mdb.Error, e:
 
         print "Error %d: %s" % (e.args[0], e.args[1])

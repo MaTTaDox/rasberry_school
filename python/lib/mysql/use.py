@@ -12,6 +12,7 @@ def execute(query):
         cur = con.cursor()
         cur.execute("USE readings")
         cur.execute(query)
+        con.commit()
 
         return cur
 
