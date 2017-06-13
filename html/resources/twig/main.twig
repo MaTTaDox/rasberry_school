@@ -21,13 +21,9 @@
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-body">
-            <ul class="pager pull-left">
-                <li class="previous"><a onclick="page--;get()"><span aria-hidden="true">&larr;</span> Older</a></li>
-            </ul>
+            <span class="previous pull-left"><a onclick="page--;get()"><span aria-hidden="true">&larr;</span> Older</a></span>
             Seite <span class="badge" id="site"></span> Pro Seite <span class="badge" id="perPage"></span> Gesamt <span class="badge" id="total"></span>
-            <ul class="pager pull-right">
-                <li class="next"><a onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a></li>
-            </ul>
+            <span class="next pull-right"><a onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a></span>
         </div>
     </div>
 
@@ -84,7 +80,7 @@
 
                 }
 
-                last = Math.ceil(result.total/resut.itemsPerPage);
+                last = Math.ceil(result.total/result.itemsPerPage);
 
                 if(result.page >= last){
                     $(".next").addClass("disabled");
