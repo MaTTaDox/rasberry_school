@@ -35,10 +35,10 @@ class DefaultController extends BaseController
                                   WHERE l.id = v.location_id LIMIT ".$itemsPerPage." OFFSET ".$offset);
 
 
-            $total = 0;
+            $total = $query->num_rows;
 
             $results = [];
-            while($row = $query->fetch_assoc()){
+            while($row = $query->fetch_row()){
                 $results[] = $row;
             }
 
