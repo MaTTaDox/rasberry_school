@@ -7,7 +7,7 @@ import src.task_2 as task_2
 import src.task_3 as task_3
 import src.task_4 as task_4
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     logic.setup()
     options = [task_1, task_2, task_3, task_4]
 

@@ -10,15 +10,16 @@ def db():
     try:
 
         cur = con.cursor()
-        cur.execute("SELECT VERSION()")
 
-        ver = cur.fetchone()
+        cur.execute("SHOW DATABASES LIKE 'readings'")
 
-        print "Database version : %s " % ver
+        x = cur.fetchone()
+
+        print vars(x)
 
     except mdb.Error, e:
 
-        print "Error %d: %s" % (e.args[0],e.args[1])
+        print "Error %d: %s" % (e.args[0], e.args[1])
         sys.exit(1)
 
 
