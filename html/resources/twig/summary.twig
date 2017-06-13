@@ -27,7 +27,8 @@
                     var aResult = result[i];
 
                     $("#summary").append("<div class='panel panel-default'><div class='panel-heading'>"+aResult.identifer+"</div><div class='panel-body' id='body-"+aResult.id+"'></div></div>")
-                    getSummary(aResult.id)
+
+                    setInterval(getSummary(aResult.id),10000)
                 }
             },
             error: function(jqXHR, textStatus, errorThrown){
@@ -44,6 +45,8 @@
             $.ajax("/api/summary/"+id,{
 
                 success: function(result){
+
+                    body.html("");
 
                     for(var i in result){
                         var aResult = result[i];
