@@ -25,22 +25,23 @@ class DefaultController extends BaseController
 
     public function listReadingValues(){
 
-            $page = $this->request->get('page',1);
-            $itemsPerPage = $this->request->get('itemsPerPage',50);
+        $page = $this->request->get('page', 1);
+        $itemsPerPage = $this->request->get('itemsPerPage', 50);
 
-            $offset = ($page * $itemsPerPage) - $itemsPerPage;
+        $offset = ($page * $itemsPerPage) - $itemsPerPage;
 
-            $mysql = new \MySQLi("localhost","root","abcD123","readings");
-            $query = $mysql->query("SELECT SQL_CALC_FOUND_ROWS * FROM `values` as v INNER JOIN locations as l 
-                                  WHERE l.id = v.location_id LIMIT ".$itemsPerPage." OFFSET ".$offset);
+        $mysql = new \MySQLi("localhost", "root", "abcD123", "readings");
+        $query = $mysql->query("SELECT SQL_CALC_FOUND_ROWS * FROM `values` as v INNER JOIN locations as l 
+                                  WHERE l.id = v.location_id LIMIT " . $itemsPerPage . " OFFSET " . $offset);
+
+        $total = $mysql->query("SELECT FOUND_ROWS() as foundRows")->fetch_assoc();
 
 
-            $total = $query->num_rows;
-
-            $results = [];
-            while($row = $query->fetch_row()){
-                $results[] = $row;
-            }
+        $results = [];
+        while ($row = $query->fetch_row())
+        {
+            $results[] = $row;
+        }
 
 
         return new JsonResponse([
