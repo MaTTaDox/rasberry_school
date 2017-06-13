@@ -17,6 +17,7 @@ def db():
 
         if result is None:
             cur.execute("CREATE DATABASE readings")
+            cur.execute("USE readings")
 
             cur.execute("CREATE TABLE `locations` (`id` int(11) unsigned NOT NULL AUTO_INCREMENT, `identifer` varchar(200) NOT NULL DEFAULT '',PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;")
 
