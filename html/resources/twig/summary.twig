@@ -53,7 +53,21 @@
                             "<b>Max:</b> "+parseFloat(aResult.max).toFixed(2)+mapping[i].unit+"<br>" +
                             "<b>Min:</b> "+parseFloat(aResult.min).toFixed(2)+mapping[i].unit+"<br>" +
                             "<b>Avg:</b> "+parseFloat(aResult.avg).toFixed(2)+mapping[i].unit+"<br>" +
-                            "</div>")
+                            "<canvas id='myChart-"+i+"-"+id+"' ></canvas>" +
+                            "</div>" +
+                            "")
+
+                        var ctx = $("#myChart-"+i+"-"+id);
+
+                        var options = [];
+
+
+                        var myLineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: aResult.values,
+                            options: options
+                        });
+
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown){
