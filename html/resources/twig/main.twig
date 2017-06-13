@@ -20,7 +20,9 @@
 </nav>
 <div class="container-fluid">
     <div class="panel panel-default">
-        Seite: <span id="site"></span> Pro Seite: <span id="perPage"></span> Gesamt: <span id="total"></span>
+        <div class="panel-body">
+            Seite <span class="badge" id="site"></span> Pro Seite <span class="badge" id="perPage"></span> Gesamt <span class="badge" id="total"></span>
+        </div>
     </div>
 
     <table class="table table-striped">
@@ -32,7 +34,7 @@
             <th>Einheit</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="table">
 
         </tbody>
     </table>
@@ -51,7 +53,19 @@
                 $("#site").html(result.page);
                 $("#perPage").html(result.itemsPerPage);
                 $("#total").html(result.total);
-                
+
+                for(var i = 0;i < result.results.length;i++){
+                    var aResult = result.results[i];
+
+                    $("#table").append("<tr>" +
+                        "<td>"+aResult.datetime+"</td>" +
+                        "<td>"+aResult.identifer+"</td>" +
+                        "<td>"+aResult.value+"</td>" +
+                        "<td>"+aResult.unit+"</td>"
+                    )
+
+                }
+
             },
             error: function(jqXHR, textStatus, errorThrown){
 
