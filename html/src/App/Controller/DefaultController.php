@@ -34,11 +34,11 @@ class DefaultController extends BaseController
         $query = $mysql->query("SELECT SQL_CALC_FOUND_ROWS * FROM `values` as v INNER JOIN locations as l 
                                   WHERE l.id = v.location_id LIMIT " . $itemsPerPage . " OFFSET " . $offset);
 
-        $total = $mysql->query("SELECT FOUND_ROWS() as foundRows")->fetch_assoc();
+        $total = $mysql->query("SELECT FOUND_ROWS() as foundRows")->fetch_assoc()['foundRows'];
 
 
         $results = [];
-        while ($row = $query->fetch_row())
+        while ($row = $query->fetch_assoc())
         {
             $results[] = $row;
         }
