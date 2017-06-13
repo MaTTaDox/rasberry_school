@@ -29,12 +29,12 @@
 
                 success: function (result) {
 
-                    $("#summary").html("");
-                    
                     for (var i = 0; i < result.length; i++) {
                         var aResult = result[i];
 
-                        $("#summary").append("<div class='panel panel-default'><div class='panel-heading'>" + aResult.identifer + "</div><div class='panel-body' id='body-" + aResult.id + "'></div></div>")
+                        if($('#panel-' + aResult.id).length == 0) {
+                            $("#summary").append("<div class='panel panel-default' id='panel-" + aResult.id + "' ><div class='panel-heading'>" + aResult.identifer + "</div><div class='panel-body' id='body-" + aResult.id + "'></div></div>")
+                        }
                         getSummary(aResult.id)
                     }
                 },
