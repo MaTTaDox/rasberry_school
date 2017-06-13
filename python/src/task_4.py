@@ -71,7 +71,7 @@ def run():
         print "Luftdruck  : ", pressure, "mbar"
         print "------------------------------"
         print 'Temperatur: {0:0.1f}°C '.format(temperatur)
-        print 'Luftfeuchtigkeit: {0:0.1f}%'.format(humidity)
+        print 'Luftfeuchtigkeit: {0:0.1f}% ( {1:0.1f}%)'.format(humidity,avg)
         print '+-------------------------------------------------+'
 
         string_1 = "{0}|{1:0.1f}C".format(time.strftime("%d.%m %H:%M"), temperature)
