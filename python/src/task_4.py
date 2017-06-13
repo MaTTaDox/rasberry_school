@@ -32,7 +32,7 @@ def run():
     mysqlInit.db()
 
     while True:
-        location = input("Messort:")
+        location = raw_input("Messort:")
 
         print getLocation(location)
 
