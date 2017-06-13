@@ -50,9 +50,9 @@
 
                         body.append("<div class='col-md-4'>" +
                             "<h3>"+mapping[i].identifer+"</h3>" +
-                            "<b>Max:</b> "+aResult.max+mapping[i].unit+"<br>" +
-                            "<b>Min:</b> "+aResult.min+mapping[i].unit+"<br>" +
-                            "<b>Avg:</b> "+aResult.avg+mapping[i].unit+"<br>" +
+                            "<b>Max:</b> "+parseFloat(aResult.max).toFixed(2)+mapping[i].unit+"<br>" +
+                            "<b>Min:</b> "+parseFloat(aResult.min).toFixed(2)+mapping[i].unit+"<br>" +
+                            "<b>Avg:</b> "+parseFloat(aResult.avg).toFixed(2)+mapping[i].unit+"<br>" +
                             "</div>")
                     }
                 },
