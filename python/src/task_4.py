@@ -20,6 +20,7 @@ SENSOR_PIN = 26
 RED_LIGHT = 17
 BLUE_LIGHT = 27
 
+
 def getLocation(identifer):
     query = mysqlUse.execute("SELECT id FROM locations WHERE identifer = '"+identifer+"' LIMIT 1")
     row = query.fetchone()
@@ -29,6 +30,8 @@ def getLocation(identifer):
 
         query = mysqlUse.execute("SELECT id FROM locations WHERE identifer = '"+identifer+"' LIMIT 1")
         row = query.fetchone()
+
+    print row[0]
 
     return row[0]
 
