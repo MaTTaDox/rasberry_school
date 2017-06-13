@@ -115,7 +115,7 @@
                     table.append("<tr>" +
                         "<td>"+aResult.datetime+"</td>" +
                         "<td>"+aResult.identifer+"</td>" +
-                        "<td>"+aResult.value.toFixed(2)+mapping[aResult.unit].unit+"</td>" +
+                        "<td>"+parseFloat(aResult.value).toFixed(2)+mapping[aResult.unit].unit+"</td>" +
                         "<td>"+mapping[aResult.unit].identifer+"</td>"
                     )
 
