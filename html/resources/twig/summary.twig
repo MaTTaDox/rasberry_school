@@ -28,7 +28,7 @@
 
                     $("#summary").append("<div class='panel panel-default'><div class='panel-heading'>"+aResult.identifer+"</div><div class='panel-body' id='body-"+aResult.id+"'></div></div>")
 
-                    setInterval(getSummary(aResult.id),10000)
+                    setInterval(getSummary(aResult.id),1000)
                 }
             },
             error: function(jqXHR, textStatus, errorThrown){
