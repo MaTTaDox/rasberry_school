@@ -19,24 +19,26 @@
             }
         };
 
-        $.ajax("/api/locations",{
+        setInterval(function () {
 
-            success: function(result){
+            $.ajax("/api/locations", {
 
-                for(var i = 0;i < result.length;i++){
-                    var aResult = result[i];
+                success: function (result) {
 
-                    $("#summary").append("<div class='panel panel-default'><div class='panel-heading'>"+aResult.identifer+"</div><div class='panel-body' id='body-"+aResult.id+"'></div></div>")
+                    for (var i = 0; i < result.length; i++) {
+                        var aResult = result[i];
 
-                    setInterval(getSummary(aResult.id),1000)
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown){
+                        $("#summary").append("<div class='panel panel-default'><div class='panel-heading'>" + aResult.identifer + "</div><div class='panel-body' id='body-" + aResult.id + "'></div></div>")
+                        getSummary(aResult.id)
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
 
-            },
-            method: "GET"
-        });
+                },
+                method: "GET"
+            });
 
+        }, 10000);
 
         function getSummary(id)
         {
