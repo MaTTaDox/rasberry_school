@@ -59,7 +59,11 @@
 
                         var ctx = $("#myChart-"+i+"-"+id);
 
-                        var options = [];
+                        var options = {
+                            legend: {
+                                display: false
+                            }
+                        };
 
 
                         var myLineChart = new Chart(ctx, {
