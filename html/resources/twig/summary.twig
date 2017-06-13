@@ -1,4 +1,30 @@
 {% extends "main.twig" %}
 
 {% block content %}
+    <div class="container-fluid" id="summary">
+    </div>
+    <script>
+        $.ajax("/api/locations",{
+
+            success: function(result){
+
+                for(var i = 0;i < result.results.length;i++){
+                    var aResult = result.results[i];
+
+                    $("#summary").append("<div class='panel panel-default'><div class='panel-heading'>"+aResult.identifer+"</div><div class='panel-body' id='body-"+aResult.id+"'></div></div>")
+                    getSummary(aResult.id)
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+
+            },
+            method: "GET"
+        });
+
+
+        function getSummary(id)
+        {
+            $("#body-"+id).append("")
+        }
+    </script>
 {% endblock %}

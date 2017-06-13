@@ -33,10 +33,10 @@ class SummaryController extends BaseController
             $results[$row['unit']] = $row;
         }
 
-        $query = $this->mysql->query("SELECT `value`, unit FROM `values` WHERE location_id =  ".(int)$locationId);
+        $query = $this->mysql->query("SELECT `value`, unit, datetime FROM `values` WHERE location_id =  ".(int)$locationId);
 
         while($row = $query->fetch_assoc()){
-            $results[$row['unit']]['values'][] = $row['value'];
+            $results[$row['unit']]['values'][$row['datetime']] = $row['value'];
         }
 
         return new JsonResponse($results);
