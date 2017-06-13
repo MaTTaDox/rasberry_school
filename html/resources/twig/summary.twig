@@ -4,6 +4,21 @@
     <div class="container-fluid" id="summary">
     </div>
     <script>
+        var mapping = {
+            temperature: {
+                unit: "°C",
+                identifer: "Temperatur"
+            },
+            humidity: {
+                unit: "%",
+                identifer: "Luftfeuchtigkeit"
+            },
+            pressure: {
+                unit: "mBar",
+                identifer: "Luftdruck"
+            }
+        };
+
         $.ajax("/api/locations",{
 
             success: function(result){
@@ -33,7 +48,12 @@
                     for(var i in result){
                         var aResult = result[i];
 
-                        body.append("<div class='col-md-4'>"+i+"</div>")
+                        body.append("<div class='col-md-4'>" +
+                            "<h3>"+mapping[i].identifer+"</h3>" +
+                            "<b>Max:</b> "+aResult.max+mapping[i].unit+"<br>" +
+                            "<b>Min:</b> "+aResult.min+mapping[i].unit+"<br>" +
+                            "<b>Avg:</b> "+aResult.avg+mapping[i].unit+"<br>" +
+                            "</div>")
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown){
