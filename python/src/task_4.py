@@ -35,7 +35,8 @@ def getLocation(identifer):
 
 def inserRow(locationId, unit, value):
 
-    mysqlUse.execute("INSERT INTO `values` (location_id,unit,`value`) VALUES ('"+locationId+"','"+unit+"','"+value+"')")
+    mysqlUse.execute("INSERT INTO `values` (location_id,unit,`value`) "
+                     "VALUES ('"+str(locationId)+"','"+str(unit)+"','"+str(value)+"')")
 
 
 def run():
