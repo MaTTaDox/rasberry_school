@@ -26,8 +26,8 @@
     </div>
     <nav aria-label="...">
         <ul class="pager">
-            <li class="previous"><a onclick="if(page > first){page--;get()}"><span aria-hidden="true">&larr;</span> Older</a></li>
-            <li class="next"><a onclick="if(page < last){page++;get()}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            <li class="previous"><a onclick="previousPage()"><span aria-hidden="true">&larr;</span> Older</a></li>
+            <li class="next"><a onclick="nexPage()">Newer <span aria-hidden="true">&rarr;</span></a></li>
         </ul>
     </nav>
 
@@ -55,9 +55,31 @@
     var last = 1;
     var first = 1;
 
+    function nexPage() {
+        if(page < last){
+            page++;
+            get();
+        }
+    }
+
+    function previousPage() {
+        if(page > first){
+            page--;
+            get();
+        }
+    }
+
+    $(document).keydown(function(e) {
+        if(e.keyCode == 37){
+            previousPage();
+        }
+        if(e.keyCode == 39){
+            nexPage();
+        }
+    });
+
     get();
     function get(){
-
 
         $.ajax("/api/readings",{
             data: {
