@@ -19,6 +19,23 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <div class="panel panel-default">
+        Seite: <span id="site"></span> Pro Seite: <span id="perPage"></span> Gesamt: <span id="total"></span>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Zeit</th>
+            <th>Ort</th>
+            <th>Messwert</th>
+            <th>Einheit</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
@@ -31,7 +48,10 @@
             data: {
             },
             success: function(result){
-
+                $("#site").html(result.page);
+                $("#perPage").html(result.itemsPerPage);
+                $("#total").html(result.total);
+                
             },
             error: function(jqXHR, textStatus, errorThrown){
 
