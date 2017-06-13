@@ -26,6 +26,8 @@ def db():
                 "`id` int(11) unsigned NOT NULL AUTO_INCREMENT,"
                 "`location_id` int(10) unsigned NOT NULL,"
                 "`datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,"
+                "`value` decimal(12,4) NOT NULL,"
+                "`unit` varchar(100) NOT NULL DEFAULT '',"
                 "PRIMARY KEY (`id`),"
                 "KEY `location_id` (`location_id`),"
                 "CONSTRAINT `values_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE"
