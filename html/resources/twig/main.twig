@@ -21,7 +21,13 @@
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-body">
+            <ul class="pager pull-left">
+                <li class="previous"><a onclick="page--;get()"><span aria-hidden="true">&larr;</span> Older</a></li>
+            </ul>
             Seite <span class="badge" id="site"></span> Pro Seite <span class="badge" id="perPage"></span> Gesamt <span class="badge" id="total"></span>
+            <ul class="pager pull-right">
+                <li class="next"><a onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
         </div>
     </div>
 
@@ -42,22 +48,34 @@
 </body>
 </html>
 <script>
+
+    var page = 1;
+    var itemsPerPage = 50;
+
+    var last = 1;
+    var first = 1;
+
     get();
     function get(){
 
 
         $.ajax("/api/readings",{
             data: {
+                page: page,
+                itemsPerPage: itemsPerPage
             },
             success: function(result){
                 $("#site").html(result.page);
                 $("#perPage").html(result.itemsPerPage);
                 $("#total").html(result.total);
 
+                var table = $("#table");
+                table.html("");
+
                 for(var i = 0;i < result.results.length;i++){
                     var aResult = result.results[i];
 
-                    $("#table").append("<tr>" +
+                    table.append("<tr>" +
                         "<td>"+aResult.datetime+"</td>" +
                         "<td>"+aResult.identifer+"</td>" +
                         "<td>"+aResult.value+"</td>" +
@@ -65,6 +83,19 @@
                     )
 
                 }
+
+                last = Math.ceil(result.total/resut.itemsPerPage);
+
+                if(result.page >= last){
+                    $(".next").addClass("disabled");
+                    $(".previous").removeClass("disabled");
+                }
+                else if(result.page <= first){
+                    $(".previous").addClass("disabled");
+                    $(".next").removeClass("disabled");
+                }
+
+
 
             },
             error: function(jqXHR, textStatus, errorThrown){
