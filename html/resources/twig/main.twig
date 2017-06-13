@@ -26,8 +26,8 @@
     </div>
     <nav aria-label="...">
         <ul class="pager">
-            <li class="previous"><a onclick="page--;get()"><span aria-hidden="true">&larr;</span> Older</a></li>
-            <li class="next"><a onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            <li class="previous"><a onclick="if(page > first){page--;get()}"><span aria-hidden="true">&larr;</span> Older</a></li>
+            <li class="next"><a onclick="if(page < last){page++;get()}">Newer <span aria-hidden="true">&rarr;</span></a></li>
         </ul>
     </nav>
 
