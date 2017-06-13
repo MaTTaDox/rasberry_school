@@ -3,9 +3,8 @@
 
 import lib.mysql.use as mysqlUse
 import lib.mysql.init as mysqlInit
-import RPi.GPIO as GPIO
-import csv
 import Adafruit_DHT
+import lib.lcddriver as lcddriver
 import time
 import lib.bmp180 as bmp180
 
