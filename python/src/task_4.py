@@ -51,7 +51,6 @@ def run():
 
     count = 0
     total = 0
-    l
 
     while True:
         (temperature, pressure) = bmp180.readBmp180()
@@ -61,7 +60,7 @@ def run():
 
         if count > 10:
             avg = total/count
-            
+
             if humidity > 2 * avg:
                 humidity = avg
 
