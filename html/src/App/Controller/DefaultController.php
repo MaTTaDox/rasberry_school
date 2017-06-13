@@ -32,7 +32,8 @@ class DefaultController extends BaseController
 
             $mysql = new \mysqli("localhost","root","abcD123","readings");
 
-            $query = $mysql->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM `values` as v INNER JOIN locations as l 
+            $query = $mysql->stmt_init();
+            $query->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM `values` as v INNER JOIN locations as l 
                                   WHERE l.id = v.location_id LIMIT ? OFFSET ?");
             $query->bind_param("ii", $itemsPerPage, $offset);
 
