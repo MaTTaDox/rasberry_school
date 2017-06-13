@@ -49,6 +49,21 @@
 </html>
 <script>
 
+    mapping = {
+        temperature: {
+            unit: "°C",
+            identifer: "Temperatur"
+        },
+        humidity: {
+            unit: "%",
+            identifer: "Luftfeuchtigkeit"
+        },
+        pressure: {
+            unit: "mBar",
+            identifer: "Luftdruck"
+        }
+    };
+
     var page = 1;
     var itemsPerPage = 50;
 
@@ -100,8 +115,8 @@
                     table.append("<tr>" +
                         "<td>"+aResult.datetime+"</td>" +
                         "<td>"+aResult.identifer+"</td>" +
-                        "<td>"+aResult.value+"</td>" +
-                        "<td>"+aResult.unit+"</td>"
+                        "<td>"+aResult.value+mapping[aResult.unit].unit+"</td>" +
+                        "<td>"+mapping[aResult.unit].identifer+"</td>"
                     )
 
                 }
