@@ -21,9 +21,9 @@
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-body">
-            <span class="previous pull-left"><a onclick="page--;get()"><span aria-hidden="true">&larr;</span> Older</a></span>
+            <a onclick="page--;get()" class="previous pull-left"><span aria-hidden="true">&larr;</span> Older</a>
             Seite <span class="badge" id="site"></span> Pro Seite <span class="badge" id="perPage"></span> Gesamt <span class="badge" id="total"></span>
-            <span class="next pull-right"><a onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a></span>
+            <a class="next pull-right" onclick="page++;get()">Newer <span aria-hidden="true">&rarr;</span></a>
         </div>
     </div>
 
