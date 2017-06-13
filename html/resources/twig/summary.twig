@@ -24,7 +24,24 @@
 
         function getSummary(id)
         {
-            $("#body-"+id).append("")
+            var body = $("#body-"+id);
+
+            $.ajax("/api/summary/"+id,{
+
+                success: function(result){
+
+                    for(var i in result){
+                        var aResult = result[i];
+
+                        body.append("<div class='col-md-4'>"+i+"</div>")
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+
+                },
+                method: "GET"
+            });
+
         }
     </script>
 {% endblock %}
