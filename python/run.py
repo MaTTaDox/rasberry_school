@@ -43,7 +43,7 @@ if __name__ == '__main__':
             # If we have the UID, continue
             if status == MIFAREReader.MI_OK:
 
-                uidStr = str(uid[0]) + "," + str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3])
+                uidStr = str(uid[0]) + "-" + str(uid[1]) + "-" + str(uid[2]) + "-" + str(uid[3])
 
                 # Print UID
                 print "Card read UID: " + uidStr

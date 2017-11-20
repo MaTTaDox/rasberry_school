@@ -1,0 +1,18 @@
+{
+  "name": "vcd-socket",
+  "version": "0.0.0",
+  "description": "To be written",
+  "main": "index.js",
+  "author": "Dominik Malsch",
+  "private": true,
+  "license": "",
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "express": "4.13.4",
+    "ioredis": "^3.1.4",
+    "socket.io": "^2.0.3"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
