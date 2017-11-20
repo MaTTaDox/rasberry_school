@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import lib.MFRC522 as MFRC522
 import signal
+import redis
 
 continue_reading = True
 
@@ -19,6 +20,8 @@ if __name__ == '__main__':
         signal.signal(signal.SIGINT, end_read)
 
         MIFAREReader = MFRC522.MFRC522()
+
+        r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
         # Welcome message
         print "Welcome to the MFRC522 data read example"
@@ -51,9 +54,14 @@ if __name__ == '__main__':
 
                 # Authenticate
                 status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
-        
+
                 # Check if authenticated
                 if status == MIFAREReader.MI_OK:
+
+                    r.set('rfid_'+uid, True)
+
+                    r.publish('rfid_authentication', uid)
+
                     MIFAREReader.MFRC522_Read(8)
                     MIFAREReader.MFRC522_StopCrypto1()
                 else:
