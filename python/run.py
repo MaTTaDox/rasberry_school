@@ -43,8 +43,10 @@ if __name__ == '__main__':
             # If we have the UID, continue
             if status == MIFAREReader.MI_OK:
 
+                uidStr = str(uid[0]) + "," + str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3])
+
                 # Print UID
-                print "Card read UID: " + str(uid[0]) + "," + str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3])
+                print "Card read UID: " + uidStr
 
                 # This is the default key for authentication
                 key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
@@ -58,9 +60,9 @@ if __name__ == '__main__':
                 # Check if authenticated
                 if status == MIFAREReader.MI_OK:
 
-                    r.set('rfid_'+uid, True)
+                    r.set('rfid_'+ uidStr, True)
 
-                    r.publish('rfid_authentication', uid)
+                    r.publish('rfid_authentication', uidStr)
 
                     MIFAREReader.MFRC522_Read(8)
                     MIFAREReader.MFRC522_StopCrypto1()
