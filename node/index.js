@@ -10,12 +10,14 @@ var pubSub = new Redis();
 io.on('connection', function (socket) {
     console.log('a user connected');
     socket.on('disconnect', function () {
-        io.emit('connected_user', connectedUser);
+        console.log('user disconnected');
     });
 
 });
 
-pubSub.on('rfid_authentication', function (pattern, channel, message) {
+pubSub.psubscribe('rfid_authentication', function (err, count) {
+});
+pubSub.on('pmessage', function (pattern, channel, message) {
     // Receive message Hello world! from channel news
     // Receive message Hello again! from channel music
     console.log('Receive message %s from channel %s and pattern %s', message, channel, pattern);
