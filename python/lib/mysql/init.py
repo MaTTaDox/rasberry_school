@@ -11,7 +11,7 @@ def db():
 
         cur = con.cursor()
 
-        cur.execute("SHOW DATABASES LIKE 'readings'")
+        cur.execute("SHOW DATABASES LIKE 'rfid'")
 
         result = cur.fetchone()
 

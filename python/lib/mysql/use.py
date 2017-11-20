@@ -2,7 +2,7 @@
 import MySQLdb as mdb
 import sys
 
-con = mdb.connect('localhost', 'root', 'abcD123')
+con = mdb.connect('localhost', 'root', 'abcD123', 'rfid')
 
 
 def execute(query):
@@ -10,7 +10,6 @@ def execute(query):
     try:
 
         cur = con.cursor()
-        cur.execute("USE readings")
         cur.execute(query)
         con.commit()
 
