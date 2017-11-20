@@ -60,7 +60,7 @@ if __name__ == '__main__':
                 # Check if authenticated
                 if status == MIFAREReader.MI_OK:
 
-                    r.set('rfid_'+ uidStr, True)
+                    r.set('rfid_'+ uidStr, True, 10)
 
                     r.publish('rfid_authentication', uidStr)
 
