@@ -37,9 +37,6 @@ class RFIDFactory implements SecurityFactoryInterface
 
     public function addConfiguration(NodeDefinition $node)
     {
-        $node
-            ->children()
-            ->scalarNode('lifetime')->defaultValue(300)
-            ->end();
+
     }
 }
