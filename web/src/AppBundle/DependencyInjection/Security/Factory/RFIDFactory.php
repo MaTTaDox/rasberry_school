@@ -17,7 +17,7 @@ class RFIDFactory implements SecurityFactoryInterface
         $providerId = 'security.authentication.provider.rfid.' . $id;
         $container
             ->setDefinition($providerId, new ChildDefinition(RFIDProvider::class))
-            ->replaceArgument(0, new Reference($userProvider));
+            ->setArgument(0, new Reference($userProvider));
 
         $listenerId = 'security.authentication.listener.rfid.' . $id;
         $listener = $container->setDefinition($listenerId, new ChildDefinition(RFIDListener::class));

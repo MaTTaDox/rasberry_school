@@ -12,6 +12,7 @@ services:
     AppBundle\Security\Firewall\RFIDListener:
             arguments: ['@security.token_storage', '@security.authentication.manager']
             public: false
+    Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface: '@security.authentication.manager'
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
