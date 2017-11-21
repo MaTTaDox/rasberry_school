@@ -17,7 +17,6 @@ security:
             provider: our_db_provider
             pattern:    ^/
             anonymous: ~
-            stateless: true
             rfid:      true
             logout:
                     path: /logout
