@@ -10,20 +10,15 @@
         const socket = io('http://rfid.local:3000');
 
         socket.on('rfid_authentication', (data) => {
-            console.log(data);
-
-            /*
             var params = [
-                "foo=bar",
-                "base=ball"
+                "rfid="+data
             ];
 
             window.location.href =
                 "http://" +
                 window.location.host +
-                window.location.pathname +
                 '?' + params.join('&');
-                */
+                
         });
 
     </script>
