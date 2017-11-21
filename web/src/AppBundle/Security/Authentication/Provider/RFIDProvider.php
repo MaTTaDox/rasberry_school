@@ -28,7 +28,7 @@ class RFIDProvider implements AuthenticationProviderInterface
             $this->throwException();
         }
 
-        $user = $this->userProvider->loadUserByUsername($token->getUsername());
+        $user = $this->userProvider->loadByRFID($token->getUsername());
 
         if ($user) {
             $authenticatedToken = new RFIDToken($user->getRoles());
