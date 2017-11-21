@@ -3,6 +3,7 @@
 namespace AppBundle\Security\Firewall;
 
 use AppBundle\Security\Authentication\Token\RFIDToken;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
@@ -43,8 +44,7 @@ class RFIDListener implements ListenerInterface
         }
 
         // By default deny authorization
-        $response = new Response();
-        $response->setStatusCode(Response::HTTP_FORBIDDEN);
+        $response = new RedirectResponse("/",Response::HTTP_FORBIDDEN);
         $event->setResponse($response);
     }
 }
