@@ -14,6 +14,13 @@ security:
             security: false
 
         main:
+            pattern:    ^/
+            anonymous: ~
+            stateless: true
+            rfid:      true
+            logout:
+                    path: /logout
+                    target: /
             anonymous: ~
             # activate different ways to authenticate
 
