@@ -2,8 +2,11 @@
 // src/AppBundle/Security/Authentication/Provider/WsseProvider.php
 namespace AppBundle\Security\Authentication\Provider;
 
+use AppBundle\Entity\User;
 use AppBundle\Security\Authentication\Token\RFIDToken;
 use Psr\Cache\CacheItemPoolInterface;
+use Snc\RedisBundle\Client\Phpredis\Client;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -14,9 +17,12 @@ class RFIDProvider implements AuthenticationProviderInterface
 {
     private $userProvider;
     private $cachePool;
+    /** @var  Container */
+    protected $container;
 
-    public function __construct(UserProviderInterface $userProvider, CacheItemPoolInterface $cachePool)
+    public function __construct(UserProviderInterface $userProvider, CacheItemPoolInterface $cachePool, Container $container)
     {
+        $this->container;
         $this->userProvider = $userProvider;
         $this->cachePool = $cachePool;
     }
@@ -28,9 +34,12 @@ class RFIDProvider implements AuthenticationProviderInterface
             $this->throwException();
         }
 
-        $user = $this->userProvider->loadByRFID($token->getUsername());
+        $user = $this->userProvider->loadUserByUsername($token->getUsername());
 
-        if ($user) {
+        /** @var Client $redis */
+        $redis = $this->container->get('snc_redis.default');
+
+        if ($user instanceof User && $redis->exists('rfid_'.$user->getRfid())) {
             $authenticatedToken = new RFIDToken($user->getRoles());
             $authenticatedToken->setUser($user);
 

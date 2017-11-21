@@ -11,18 +11,10 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     public function loadUserByUsername($username)
     {
         return $this->createQueryBuilder('u')
-            ->where('u.username = :username OR u.email = :email')
+            ->where('u.username = :username OR u.email = :email OR u.rfid = :rfid')
             ->setParameter('username', $username)
             ->setParameter('email', $username)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
-
-    public function loadByRFID($rfid)
-    {
-        return $this->createQueryBuilder('u')
-            ->where('u.rfid = :rfid')
-            ->setParameter('rfid', $rfid)
+            ->setParameter('rfid', $username)
             ->getQuery()
             ->getOneOrNullResult();
     }
