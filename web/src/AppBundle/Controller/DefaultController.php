@@ -21,7 +21,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/login", name="homepage")
+     * @Route("/login", name="login")
      */
     public function loginAction()
     {
