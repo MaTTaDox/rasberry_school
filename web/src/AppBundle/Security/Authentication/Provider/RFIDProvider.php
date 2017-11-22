@@ -5,11 +5,9 @@ namespace AppBundle\Security\Authentication\Provider;
 use AppBundle\Entity\User;
 use AppBundle\Security\Authentication\Token\RFIDToken;
 use Psr\Cache\CacheItemPoolInterface;
-use Snc\RedisBundle\Client\Phpredis\Client;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\Exception\NonceExpiredException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class RFIDProvider implements AuthenticationProviderInterface

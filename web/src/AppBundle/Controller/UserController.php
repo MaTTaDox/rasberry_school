@@ -5,27 +5,19 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends BaseController
+class UserController extends BaseController
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/users/add", name="addUser")
      */
-    public function indexAction(Request $request)
+    public function addAction(Request $request)
     {
+
         return $this->render('default/main.html.twig', []);
     }
 
     public static function activeNavTab()
     {
         return "home";
-    }
-
-    /**
-     * @Route("/login", name="homepage")
-     */
-    public function loginAction()
-    {
-        return $this->render('default/login.html.twig', []);
-
     }
 }

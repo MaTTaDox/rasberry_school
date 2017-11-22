@@ -44,7 +44,7 @@ class RFIDListener implements ListenerInterface
         }
 
         // By default deny authorization
-        $response = new RedirectResponse("/");
+        $response = new RedirectResponse("/login");
         $event->setResponse($response);
     }
 }
